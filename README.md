@@ -4,7 +4,8 @@
 
 ###Description
 
-This is a multi-model app to track accomlishments, and provide a visual collection of all the users' accomplishments.  
+This is a multi-model app to track accomlishments, and provide a visual collection of all the users' accomplishments. User can select from pre-existing accomplishments like housework, homework, being kind, helping mommy; and additionally create his/her own accomplishments.
+
 I created this game for my 7-year-old daughter and 4-year-old son. 
 
 Age range: 5-8
