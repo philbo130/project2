@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="">
-	<title>Users</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+	<title></title>
 </head>
 <body>
-	<h1>users</h1>
-
+	<header>
+		<h1>ChampChart</h1>
+	</header>
+<body>
+	<h3>already a champ?</h3>
+		<h4>login</h4>
+			<form action="/user/login" method="POST">
+				<input type="text" name="username" placeholder="username">
+				<input type="text" name="password" placeholder="password">
+				<input type="submit">
+			</form>
+		<br/>
+		<br/>
+	<h3> not a champ yet?</h3>
+		<h4>signup</h4>
+			<form action="/user" method="POST">
+				<input type="text" name="username" placeholder="username">
+				<input type="text" name="email" placeholder="email">
+				<input type="text" name="password" placeholder="password">				
+				<input type="submit">
+			</form>
+			<br/>
+			<br/>
+	<h3>just want to look around?</h3>
+		<p>just looking</p>
+	<footer>
+		<%include ../footer_partial.ejs%>
+	</footer>
 </body>
 </html>
