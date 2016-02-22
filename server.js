@@ -25,7 +25,17 @@ app.use('/user', userController);
 var accompController = require('./controllers/accompController.js');
 app.use('/accomp', accompController);
 
+// makes a variable login available in your templates.
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
 require('./config/passport')(passport);
+
+//Logout
+
+
 
 //LISTEN
 mongoose.connection.once('open', function() {
