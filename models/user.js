@@ -1,8 +1,10 @@
 //REQUIREMENTS
+
 var mongoose = require('mongoose');
 var accompSchema = require('./accomp').schema;
 var bcrypt = require('bcrypt-nodejs');
 
+//USER SCHEMA
 
 var userSchema = mongoose.Schema({
 
@@ -13,13 +15,17 @@ var userSchema = mongoose.Schema({
 	
 });
 
-userSchema.methods.hash = function() { 
-	return bcrypt.hashSync(this.password, bcrypt.genSaltSync(8), null);
-}
+//METHODS
 
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
 userSchema.methods.validPassword = function(password) {
-	return bcrypt.compareSync(password, this.password);
-}
+    return bcrypt.compareSync(password, this.password);
+};
 
 var User = mongoose.model('User', userSchema);
 

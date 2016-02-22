@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%username%></title>
+	<link rel="stylesheet" type="text/css" href="/css/user.css">
+	<title></title>
 </head>
 <body>
 	<header>
-		
+		<h1>my champ chart</h1>
 	</header>
-	<h1> show</h1>
+		<section id="message board"></section>
+		<section id="chart"></section>
+		<section id="chips"></section>
+
+		<div class="container" id="logout">
+	        <a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
+		</div>
+	<footer>
+		<nav>
+			<ul>
+				<li><a href="/user/index.ejs">login</a></li>			
+				<li><a href="/user/index.ejs">champs</a></li>
+				<li><a href="/accomp/index.ejs">champchips</a></li>
+			</ul>
+		</nav>
+	</footer>
+
 </body>
 </html>
