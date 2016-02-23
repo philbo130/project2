@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/welcome.css">
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<title></title>
 </head>
 <body>
@@ -12,40 +13,40 @@
 	<div class="container" id="login">
 		<h3>already a champ?</h3>
 			<h4>login</h4>
-				<form action="/user/login" method="POST">
-					<input type="text" name="username" placeholder="username">
-					<input type="password" name="password" placeholder="password">
-					<br/>
-					<br/>
-					<input type="submit">
-				</form>
+			<form action="/user/login" method="POST">
+				<input type="text" name="email" placeholder="email">
+				<input type="password" name="password" placeholder="password">
+				<br/>
+				<br/>
+				<input type="submit">
+			</form>
 		<br/>
 	</div>
 		<br/>
 	<div class="container" id="signup">
 		<h3> not a champ yet?</h3>
 			<h4>signup</h4>
-				<form action="/user" method="POST">
-					<input type="text" name="username" placeholder="username">
-					<input type="text" name="email" placeholder="email">
-					<input type="password" name="password" placeholder="password">	
-					<br/>	
-					<br/>		
-					<input type="submit">
-				</form>
+			<form action="/user" method="POST">
+				<input type="text" name="username" placeholder="username">
+				<input type="text" name="email" placeholder="email">
+				<input type="password" name="password" placeholder="password">	
+				<br/>	
+				<br/>		
+				<input type="submit">
+			</form>
 		<br/>
 	</div>
 		<br/>
 	<div class="container" id="login">
 		<h3>just want to look around?</h3>
-			<p>just looking (add link here)</p>
+			<p><a href="/user/index.ejs">just looking</p>
 	</div>
 	<footer>
 		<nav>
 			<ul>
 				<li><a href="/user/index.ejs">champs</a></li>
-				<li><a href="/user/show.ejs">my champchart</a></li>
-				<li><a href="/accomp/index.ejs">champchips</a></li>
+				<li><a href="/user/:id">my champchart</a></li>
+				<li><a href="/accomp">stickers</a></li>
 			</ul>
 		</nav>
 	</footer>

@@ -5,6 +5,7 @@ var accompSchema = mongoose.Schema({
 	name: String,
 	descr: String,
 	img: String
+	
 });
 
 

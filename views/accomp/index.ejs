@@ -1,17 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="">
-	<title>accomplishments</title>
+	<link rel="stylesheet" type="text/css" href="/css/accomp.css">
+	<script type="text/javascript"src="/js/accomp.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<title>stickers</title>
 </head>
 <body>
 	<header>
-		<%include header_partial.ejs%>
+		<h2>sticker board</h2>
 	</header>
-	<div id="accomp_container">
-		<% for (var i=0; i<data.length; i++){ %>
-        <li><a href= /accomp/<%= [i] %>><%= data[i].name%></a></li>
-      	<% } %>
+	<div id="sticker-container">
+		<h4 id="sticker-board">stickers</h4>
+			<ul>
+				<% for (var i = 0; i < accomp.length; i++) { %>
+				<li><%=accomp[i].name%>
+					<br/>
+					<%=accomp[i].img%>
+					<br/>
+					<%=accomp[i].descr%>
+				</li>
+				<% } %>
+			</ul>
     </div>
+    <div id="wrapper">
+	    <div id="create-sticker">
+	   		<h4 id="name">create your own stickers</h4>
+	   			<form action= "/accomp" method= "POST">
+					<input type= "text" name= "name" placeholder= "sticker name">
+					<br>
+					<input type= "text" name= "descr" placeholder= "description">
+					<br>
+					<input type= "text" name= "img" placeholder= "attach imageURL">
+					<br/>
+					<button> create </button>
+				</form>
+	   	</div>	 
+	   	<br/>
+	   	<br/>
+	   	<div id="delete">
+	   		<h4>delete stickers</h4>
+	   		<div class="dropdown">
+  				<button onclick="myFunction()" class="dropbtn">delete</button>
+  				<div id="myDropdown" class="dropdown-content">
+  					<% for (var i=0; i < accomp.length; i++) { %>
+						<a><%=accomp[i].name %></a>
+							<form action="/accomp/" method="POST">
+								<input type="hidden" name="_method" value="DELETE">
+								<button id="delete-button">delete</button>
+							</form>
+					<% } %>
+				 </div>
+			</div>
+	   	
+				   	
+					</div>
+				</div>
+		</div>
+	</div>
+    <footer>
+		<ul>
+			<li><a href="/user">login</a></li>			
+			<li><a href="/user/:id">champs</a></li>
+			<li><a href="/accomp">stickers</a></li>
+			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
+		</ul>
+	</footer>
+</body>
+</html>
+
 </body>
 </html>

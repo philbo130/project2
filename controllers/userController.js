@@ -4,12 +4,15 @@ var router = express.Router();
 var User = require('../models/user.js');
 var passport = require('passport');
 var bcrypt = require('bcrypt-nodejs');
+var Accomp = require('../models/accomp.js');
 
 
-//connect with ejs file, show the signup at user welcome page
+//CONNECT WITH EJS FILE, show the signup at user welcome page
 router.get('/', function(req, res){
 	res.render('user/index.ejs')
 });
+
+// //JSON FOR TESTING
 
 router.get('/json', function(req, res) {
     User.find(function(err, user) {
@@ -23,84 +26,93 @@ router.get('/:id/json', function(req, res){
     });
 });
 
+//LOGOUT
+
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/user');
 });
 
+//RENDER SHOW PAGE
 
-// //show page
-// router.get('/:id', function(req, res){
-//     User.findById(req.params.id, function(err, user) {
-//         res.render('user/show.ejs', { data: user} );      
-//     });
-// });
-
-// router.get('/', function(req, res){
-// 	//find all users
-// 	User.find({}, function(err,users){
-// 		res.render('user/index.ejs', {
-// 			user:user
-// 		});
-// 	});
-// });
-
-
-// Login
-
-router.post('/login', passport.authenticate('local-login', { 
-	failureRedirect: '/user' }), function(req, res) {
-    // success redirect goes to show page
-    res.redirect('/user/' + req.user.id);
-    console.log('loggin in');
+router.get('/:id', function(req, res){
+    //find all users
+    User.find({}, function(err, user){
+         res.render('user/show.ejs', {
+            user:user
+        });
+    });
 });
 
-
-// Signup
-
-router.post('/', passport.authenticate('local-signup', { 
-	failureRedirect: '/user' }), function(req, res) {
-    //success redirect goes to show page
-    res.redirect('/user/' + req.user.id);
-    console.log('signed up');
+//RENDERS USER SHOW PAGE
+router.get('/:id', function(req, res){
+    User.findById(req.params.id, function(err, user) {
+        res.render('user/show.ejs', { user: user} );      
+    });
 });
 
-//Show Page 
-
+//USER RIGHTS AUTHETICATION
 // we will want this protected so you have to be logged in to visit
  // we will use route middleware to verify this (the isLoggedIn function)
 router.get('/:id', isLoggedIn, function(req, res) {
-    // req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
-	User.findById(req.params.id, function(err, user) {
-		res.render('user/show.ejs', { user: user });
-	});
+    req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
+    User.findById(req.params.id, function(err, user) {
+        res.render('user/show.ejs', { user: user });
+    });
 });
 
-//DON'T NEED THIS YET 
-// // saves a new accomplishment to the accomp model and the User's accomp list
-// router.post('/:id/newAccomp', function(req, res) {
-// 	User.findById(req.params.id, function(err, user) {
-// 		var accomp = new Accomp(req.body);
-// 		accomp.save(function(err, accomp) {
-// 			user.accomp.push(accomp);
-// 			user.save(function(err, user) {
-// 				res.redirect('/user/' + req.params.id);
-// 			});			
-// 		});
-// 	});
-// });
+// saves a new accomplishment to the accomp model and the User's accomp list
+router.post('/:id/newAccomp', function(req, res) {
+ User.findById(req.params.id, function(err, user) {
+     var accomp = new Accomp(req.body);
+     accomp.save(function(err, accomp) {
+         user.accomp.push(accomp);
+         user.save(function(err, user) {
+             res.redirect('/user/' + req.params.id);
+         });         
+     });
+ });
+});
 
-// route middleware to make sure a user is logged in
+// SIGNUP
+
+router.post('/', passport.authenticate('local-signup', {
+    failureRedirect: '/user/json' }), function(req, res) {
+    //success redirect goes to show page
+    console.log('signed up');
+    res.redirect('/user/' + req.user.id);
+});
+
+// LOGIN
+
+router.post('/login', passport.authenticate('local-login', { 
+    failureRedirect: '/user/json' }), function(req, res) {
+    // success redirect goes to show page
+    console.log('loggin in');
+    res.redirect('/user/' + req.user.id);
+});
+
+// DELETE
+
+router.delete('/:id', function(req, res){
+    User.findByIdAndRemove(req.params.id, function(err, user) {
+        console.log('deleting');
+        res.redirect('/user');
+    });
+});
+
+//ROUTE MIDDLEWARE TO MAKE SURE USER IS LOGGED IN
 
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on 
     if (req.isAuthenticated())
-    	console.log('middleware - isLoggedIn function');
+        console.log('middleware - isLoggedIn function');
         return next();
-
     // if they aren't redirect them to the home page
     res.redirect('/');
-}
+};
+
+
 
 module.exports = router;

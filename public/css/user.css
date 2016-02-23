@@ -1,13 +1,8 @@
 * {
-	font-family: arial;
+	font-family: 'Raleway', sans-serif;
 	margin 0;
 	padding 0;
 	text-align: center;
-}
-
-html {
-	margin: 0;
-	padding: 0;
 }
 
 body {
@@ -15,14 +10,12 @@ body {
 	background-size: 1400px 1000px;
 	color: grey;
 	font-size: 16px;
-	margin: 20px 0px 0px 0px;
 	padding: 0;
 }
 
 header {
-	height: 4em;
-    /*background: rgba*/
-    position: fixed;
+	height: 3em;
+	margin-bottom: 0;
     top: 0;
     width: 100%;
     z-index: -1
@@ -39,17 +32,62 @@ h1 {
 	height: 100px;
 	width: 100%;
 	border-width: 1px;
-	border-color: grey;
 }
 
-ul li{
+#message-board {
+	width: 100%;
+	height: 20px;
+	margin-top: -1em;
+	padding: 1em;
+	text-align:center;
+}
+
+#chart {
+	width: 70%;
+	height: 500px;
+	margin-left: 2em;
+	/*border: solid grey 1px;*/
+	float: left;
+}
+
+#sticker-container {
+	width: 23%;
+	height: 481px;
+	margin-right: 2em;
+	border: solid grey 1px;
+	float: right;
+}
+
+#dataset-select-container {
+	position: fixed;
+	top: 0;
+	right:5em;
+
+}
+
+#delete-container {
+/*	position: fixed;*/
+	bottom: 3 em;
+	right:5em;
+
+}
+
+.square {
+	width: 19%;
+	height: 159px;
+	border: solid grey 1px;
+	float:left;
+}
+
+ul li {
 	text-decoration: none;
 	display: inline-block;
-	margin: 0px 20px 0px 10px;
+	margin: 0px 50px 0px 50px;
+
+}
+footer {
+	position: fixed;
+	bottom:0;
+	width: 100%;
 }
 
-footer {
-  position: fixed;
-  bottom:0;
-  width: 100%;
-}
