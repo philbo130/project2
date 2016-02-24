@@ -60,13 +60,13 @@ h1 {
 
 #dataset-select-container {
 	position: fixed;
+	color: black;
 	top: 0;
 	right:5em;
-
 }
 
 #delete-container {
-/*	position: fixed;*/
+	/*position: fixed;*/
 	bottom: 3 em;
 	right:5em;
 

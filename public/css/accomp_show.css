@@ -1,0 +1,58 @@
+* {
+	font-family: 'Raleway', sans-serif;
+	margin 0;
+	padding 0;
+	text-align: center;
+}
+
+body {
+	/*background-image:;*/
+	background-size: 1400px 1000px;
+	color: grey;
+	font-size: 16px;
+	padding: 0;
+}
+
+header {
+	height: 3em;
+    /*background: rgba*/
+   /* position: fixed;*/
+    top: 0;
+    width: 100%;
+    z-index: -1
+}
+
+h4 {
+	float: left;
+	margin-left: 2em;
+}
+
+#sticker-container {
+	width: 60%;
+	height: 500px;
+	margin-left: 18%;
+	margin-right: 18%;
+	border: solid grey 1px;
+	float: left;
+}
+
+#delete-button {
+	height:1.4em;
+	width: 5em;
+	font-size: .7em;
+}
+
+/* FOOTER */
+
+ul li {
+	text-decoration: none;
+	display: inline-block;
+	margin: 0px 50px 0px 50px;
+
+}
+
+footer {
+	  position: fixed;
+	  bottom:0;
+	  width: 100%;
+}

@@ -7,10 +7,11 @@ var bcrypt = require('bcrypt-nodejs');
 var Accomp = require('../models/accomp.js');
 
 
+
 //CONNECT WITH EJS FILE, show the signup at user welcome page
-router.get('/', function(req, res){
-	res.render('user/index.ejs')
-});
+// router.get('/', function(req, res){
+// 	res.render('user/index.ejs')
+// });
 
 // //JSON FOR TESTING
 
@@ -33,21 +34,26 @@ router.get('/logout', function(req, res) {
     res.redirect('/user');
 });
 
-//RENDER SHOW PAGE
-
-router.get('/:id', function(req, res){
+//RENDER ALL USERS TO SHOW PAGE
+router.get('/', function(req, res){
     //find all users
     User.find({}, function(err, user){
-         res.render('user/show.ejs', {
-            user:user
-        });
+         res.render('user/index.ejs', {user:user});
     });
 });
 
 //RENDERS USER SHOW PAGE
 router.get('/:id', function(req, res){
     User.findById(req.params.id, function(err, user) {
+        console.log("This is the user: ", user);
         res.render('user/show.ejs', { user: user} );      
+    })
+});
+
+//RENDERS USER ACCOMP PAGE
+router.get('/:id/accomp', function(req, res){
+    User.findById(req.params.id, function(err, user) {
+        res.render('accomp/show.ejs', { user: user} );      
     });
 });
 
@@ -95,6 +101,7 @@ router.post('/login', passport.authenticate('local-login', {
 // DELETE
 
 router.delete('/:id', function(req, res){
+    console.log("delete function");
     User.findByIdAndRemove(req.params.id, function(err, user) {
         console.log('deleting');
         res.redirect('/user');
@@ -113,6 +120,44 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 };
 
+//SEED DATA
+
+router.get('/seed/newuser', function(req, res) {
+
+    var newUser = [
+        {   
+            username: "Amelia",
+            email: "paukao@gmail.com",
+            password: 1234,
+            earned: [],
+            accomp: [
+            {
+            name: "housework",
+            descr: "helped with housework",
+            img: "mop icon",
+            }, {
+            name: "picked up toys",
+            descr: "put all of my toys away",
+            img: "tbd icon",
+            }, {
+            name: "being kind",
+            descr: "went out of my way to be kind to someone",
+            img: "angel wings icon",
+            }, {
+            name: "helping mommy",
+            descr: "helped mommy without being asked",
+            img: "mom icon",
+            }
+        ]
+
+    }];
+
+    User.create(newUser, function(err) {
+          console.log("SEED: new user seeded!");
+          res.redirect('/user');
+    });
+
+});
 
 
 module.exports = router;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/accomp_show.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<title>select sticker</title>
+</head>
+<body>
+	<header>
+		<h2><%=accomp.name%></h2>
+	</header>
+	<br/>
+	<div id="sticker-container">
+		<h4>add a sticker to your champ chart</h4>
+		
+			<ul>
+				<li><%=accomp.img%>
+				<br/>
+				<%=accomp.descr%>
+				</li>
+			</ul>
+		<form action="accomp/<%=accomp.id%>" method="POST">
+		<input type="hidden" name="accomp_id" value ="<%=accomp.id%>"/>
+		<button>add me!</button> 
+		</form>
+    </div>
+    <footer>
+		<ul>
+			<li><a href="/user">login</a></li>			
+			<li><a href="/user/:id">champs</a></li>
+			<li><a href="/accomp">stickers</a></li>
+			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
+		</ul>
+	</footer>
+</body>
+</html>
+
+</body>
+</html>

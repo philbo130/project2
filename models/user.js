@@ -11,7 +11,8 @@ var userSchema = mongoose.Schema({
 	username: {type:String, required:true, unique:true},
 	email: String,
 	password: String,
-	accomp: [accompSchema]
+	accomp: [accompSchema],
+	added: [accompSchema]
 	
 });
 

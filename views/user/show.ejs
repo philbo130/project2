@@ -7,52 +7,46 @@
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<title>champ chart</title>
 </head>
-<body>
+<body> 
 	<header>
-		<h2><%=user.username%>champ chart</h2>
+		<h2><%=user.username%>'s champ chart</h2>
 	</header>
 	<section id="message-board">you're a champ! add stickers to your champ chart!	</section>
-	<div id="dataset-select-container">
-		<p id="user-name">Users</p>
-		<select id="dataset-select">
-			<option value=""/>-------</option>
-			<% for (var i=0; i < user.length; i ++) { %>
-				<option value="<%=user[i].id %>"><%= user[i].username %></option>
-			<% } %>
-		</select>					
-	</div>
-	<div id="chart">
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-		<section class="square"></section>
-	</div>
+	
+	<section id="chart">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+	</section>
 	<div id="sticker-container">
-		<h4><%=user.username%> click to add sticker to your chart</h4>
-			<ul>
-				<% for (var i = 0; i < user.accomp.length; i++) { %>
-				<li><%=user.accomp[i].name%>
-					<br/>
-					<%=user.accomp[i].img%>
-					<br/>
-					<%=user.accomp[i].descr%>
-				</li>
-				<% } %>
-			</ul>
+		<h4><%=user.username%>'s sticker collection</h4> 
+		<p>click to add sticker to your chart<p>
+		<ul>
+			<% for (var i = 0; i < user.accomp.length; i++) { %>
+			<li><%=user.accomp[i].name%>
+				<br/>
+				<%=user.accomp[i].img%>
+				<br/>
+				<%=user.accomp[i].descr%>
+			</li>
+			<% } %>
+		</ul>
+			
 	</div>
 	<div id="delete-container">
-		<form action="/user/<%=user.id%>" method="POST">
+		<form action="/user/<%=user.id%>?_method=DELETE" method="POST">
 			<input type="hidden" name="_method" value="DELETE/">
 		<button>delete me and my champ chart</button> 
 	</form>
@@ -60,8 +54,8 @@
 	<footer>
 		<ul>
 			<li><a href="/user">login</a></li>			
-			<li><a href="/user/index.ejs">champs</a></li>
-			<li><a href="/accomp/index.ejs">stickers</a></li>
+			<li><a href="/user">champs</a></li>
+			<li><a href="/accomp">stickers</a></li>
 			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
 		</ul>
 	</footer>

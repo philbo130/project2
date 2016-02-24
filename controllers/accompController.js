@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Accomp = require('../models/accomp.js');
 var mongoose = require('mongoose');
+var User = require('../models/user.js');
 
 
 //INDEX
@@ -27,10 +28,33 @@ router.get('/', function(req, res){
 	});
 });
 
+//RENDERS USER ACCOMP PAGE
+router.get('/:id', function(req, res){
+    Accomp.findById(req.params.id, function(err, accomp) {
+        res.render('accomp/show.ejs', { accomp: accomp} );      
+    });
+});
+
+
 //CREATE
 router.post('/', function(req, res){
 	var newAccomp = new Accomp(req.body);
 	newAccomp.save();
+});
+
+//UPDATE - ADD STICKER/ACCOMP TO USER - JOSH!!
+router.post('/accomp/:id', function(req, res){
+	console.log("the PUT request works");
+	// User.findById(req.user.id, function(err, user){
+	// 	console.log(user);
+	// 	Accomp.findById(req.params.id, function(err, accomp){
+	// 		user.accomp.push(accomp);
+	// 		user.save(function(err, data){
+	// 			console.log("data is " + data);
+	// 			res.redirect('/user/:id')
+	// 		});
+	// 	});
+	// });
 });
 
 //DELETE

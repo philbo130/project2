@@ -11,14 +11,13 @@
 		<h2>sticker board</h2>
 	</header>
 	<div id="sticker-container">
-		<h4 id="sticker-board">stickers</h4>
+		<h4 id="sticker-board">select a sticker to add to your collection</h4>
 			<ul>
 				<% for (var i = 0; i < accomp.length; i++) { %>
 				<li><%=accomp[i].name%>
 					<br/>
-					<%=accomp[i].img%>
-					<br/>
-					<%=accomp[i].descr%>
+					<a href="/accomp/<%=accomp[i].id%>">
+					<%=accomp[i].img%></a>
 				</li>
 				<% } %>
 			</ul>

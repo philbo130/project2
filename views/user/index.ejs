@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/welcome.css">
-<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript"src="/js/user.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/welcome.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<title></title>
 </head>
 <body>
@@ -20,7 +22,6 @@
 				<br/>
 				<input type="submit">
 			</form>
-		<br/>
 	</div>
 		<br/>
 	<div class="container" id="signup">
@@ -37,9 +38,16 @@
 		<br/>
 	</div>
 		<br/>
-	<div class="container" id="login">
-		<h3>just want to look around?</h3>
-			<p><a href="/user/index.ejs">just looking</p>
+		<br/>
+		<br/>
+	<div id="dataset-select-container">
+		<h4 id="user-name">see another champ's chart</h4>
+		<select id="dataset-select">
+			<option value=""/>-------</option>
+			<% for (var i=0; i < user.length; i ++) { %>
+				<option value="<%=user.id %>"><%= user.username %></option>
+			<% } %>
+		</select>					
 	</div>
 	<footer>
 		<nav>
