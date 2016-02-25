@@ -35,8 +35,9 @@ app.use(function(req, res, next) {
 });
 
 require('./config/passport')(passport);
+
 app.get("/", function(req, res) {
-  res.redirect("/users")
+  res.redirect("/user")
 })
 
 //LISTEN
