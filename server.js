@@ -1,5 +1,5 @@
 //REUIREMENTS
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/champcharts'
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/rewards'
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
