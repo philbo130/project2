@@ -3,14 +3,15 @@
 	margin 0;
 	padding 0;
 	text-align: center;
+	color: #212121;
 }
 
 body {
 	/*background-image:;*/
 	background-size: 1400px 1000px;
-	color: grey;
 	font-size: 16px;
 	padding: 0;
+	background-color: #F4511E;
 }
 
 header {
@@ -25,6 +26,7 @@ header {
 h4 {
 	float: left;
 	margin-left: 2em;
+	background-color: #FFF3E0;
 }
 
 #sticker-container {
@@ -32,11 +34,33 @@ h4 {
 	height: 500px;
 	margin-left: 18%;
 	margin-right: 18%;
-	border: solid grey 1px;
+	border: solid #212121 1px;
+	background-color: #FFF3E0;
 	float: left;
+	box-shadow: 5px 5px 2px #424242;
+}
+
+img {
+	margin: 5% 30% 5% 30%;	
+	size: 30em;
+}
+
+
+button {
+	background-color: #00BFA5;
+	box-shadow: 5px 5px 2px #424242;
+	border-radius: 4px;
+}
+
+button:hover {
+	transform: scale(1.1);
+	background-color: #FFD45F;
 }
 
 #delete-button {
+	background-color: #00BFA5;
+	box-shadow: 5px 5px 2px #424242;
+	border-radius: 4px;
 	height:1.4em;
 	width: 5em;
 	font-size: .7em;
@@ -44,14 +68,17 @@ h4 {
 
 /* FOOTER */
 
-ul li {
-	text-decoration: none;
-	display: inline-block;
-	margin: 0px 50px 0px 50px;
+form{
+	background-color: #FFF3E0;
+}
 
+footer a {
+	margin: 1em 3em 1em 3em;
+	display: inline-block;
 }
 
 footer {
+	background-color: #F4511E;
 	  position: fixed;
 	  bottom:0;
 	  width: 100%;

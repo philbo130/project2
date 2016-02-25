@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/rewards');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(session({ name: 'champchart', secret: 'amelia' })); 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));

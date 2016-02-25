@@ -3,14 +3,15 @@
 	margin 0;
 	padding 0;
 	text-align: center;
+	color: #212121;
 }
 
 body {
 	/*background-image:;*/
 	background-size: 1400px 1000px;
-	color: grey;
 	font-size: 16px;
 	padding: 0;
+	background-color: #F4511E;
 }
 
 header {
@@ -21,9 +22,14 @@ header {
     z-index: -1
 }
 
-h1 {
+h2 {
 	text-align: center;
 	margin-top: 0.35em;
+	font-weight: bold;
+}
+
+h4, p {
+	background-color: #FFF3E0;
 }
 
 .container {
@@ -46,7 +52,6 @@ h1 {
 	width: 70%;
 	height: 500px;
 	margin-left: 2em;
-	/*border: solid grey 1px;*/
 	float: left;
 }
 
@@ -54,19 +59,20 @@ h1 {
 	width: 23%;
 	height: 481px;
 	margin-right: 2em;
-	border: solid grey 1px;
+	border: solid #212121 1px;
 	float: right;
+	background-color: #FFF3E0;
+	box-shadow: 5px 5px 2px #424242;
 }
 
 #dataset-select-container {
 	position: fixed;
-	color: black;
+	color: #424242;
 	top: 0;
 	right:5em;
 }
 
 #delete-container {
-	/*position: fixed;*/
 	bottom: 3 em;
 	right:5em;
 
@@ -74,17 +80,42 @@ h1 {
 
 .square {
 	width: 19%;
-	height: 159px;
-	border: solid grey 1px;
+	height: 129px;
+	padding-top: 2em;
+	border: solid black 1px;
 	float:left;
+	background-color: #FFF3E0;
+	box-shadow: 5px 5px 2px #424242;
 }
 
-ul li {
-	text-decoration: none;
+input {
+	background-color: #FFF3E0;
+	box-shadow: 5px 5px 2px #424242;
+}
+
+button {
+	background-color: #00BFA5;
+	box-shadow: 5px 5px 2px #424242;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: #FFD54F;
+	transform: scale(1.1);
+	margin:0;
+}
+
+img{
+ 	height: 4em;
 	display: inline-block;
-	margin: 0px 50px 0px 50px;
-
+	margin:0;
 }
+
+footer a {
+	margin: 1em 3em 1em 3em;
+	display: inline-block;
+}
+
 footer {
 	position: fixed;
 	bottom:0;

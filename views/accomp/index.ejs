@@ -11,13 +11,13 @@
 		<h2>sticker board</h2>
 	</header>
 	<div id="sticker-container">
-		<h4 id="sticker-board">select a sticker to add to your collection</h4>
+		<h4 id="sticker-board">click on a sticker</h4>
 			<ul>
 				<% for (var i = 0; i < accomp.length; i++) { %>
-				<li><%=accomp[i].name%>
+				<li>
 					<br/>
 					<a href="/accomp/<%=accomp[i].id%>">
-					<%=accomp[i].img%></a>
+					<img src="<%=accomp[i].img%>"></a>
 				</li>
 				<% } %>
 			</ul>
@@ -31,6 +31,7 @@
 					<input type= "text" name= "descr" placeholder= "description">
 					<br>
 					<input type= "text" name= "img" placeholder= "attach imageURL">
+					<br/>
 					<br/>
 					<button> create </button>
 				</form>
@@ -50,20 +51,14 @@
 							</form>
 					<% } %>
 				 </div>
-			</div>
-	   	
-				   	
-					</div>
-				</div>
+			</div>				   
 		</div>
 	</div>
     <footer>
-		<ul>
-			<li><a href="/user">login</a></li>			
-			<li><a href="/user/:id">champs</a></li>
-			<li><a href="/accomp">stickers</a></li>
-			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
-		</ul>
+		<a href="/user">login</a>			
+		<a href="/user/:id">champs</a>
+		<a href="/accomp">stickers</a>
+		<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
 	</footer>
 </body>
 </html>

@@ -11,29 +11,22 @@
 	</header>
 	<br/>
 	<div id="sticker-container">
-		<h4>add a sticker to your champ chart</h4>
-		
-			<ul>
-				<li><%=accomp.img%>
-				<br/>
-				<%=accomp.descr%>
-				</li>
-			</ul>
-		<form action="accomp/<%=accomp.id%>" method="POST">
-		<input type="hidden" name="accomp_id" value ="<%=accomp.id%>"/>
-		<button>add me!</button> 
-		</form>
+		<h4>add a sticker to your sticker collection</h4>
+			<a><img src="<%=accomp.img%>"><br/>
+			<br/>
+			<%=accomp.descr%>
+			
+			<form action="accomp/<%=accomp.id%>" method="POST">
+				<input type="hidden" name="accomp_id" value ="<%=accomp.id%>"/>
+				<button>add</button> 
+			</form>
+		</a>
     </div>
     <footer>
-		<ul>
-			<li><a href="/user">login</a></li>			
-			<li><a href="/user/:id">champs</a></li>
-			<li><a href="/accomp">stickers</a></li>
-			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
-		</ul>
+		<a href="/user">login</a>			
+		<a href="/user/:id">champs</a>
+		<a href="/accomp">stickers</a>
+		<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
 	</footer>
-</body>
-</html>
-
 </body>
 </html>

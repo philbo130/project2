@@ -7,12 +7,6 @@ var bcrypt = require('bcrypt-nodejs');
 var Accomp = require('../models/accomp.js');
 
 
-
-//CONNECT WITH EJS FILE, show the signup at user welcome page
-// router.get('/', function(req, res){
-// 	res.render('user/index.ejs')
-// });
-
 // //JSON FOR TESTING
 
 router.get('/json', function(req, res) {
@@ -45,7 +39,7 @@ router.get('/', function(req, res){
 //RENDERS USER SHOW PAGE
 router.get('/:id', function(req, res){
     User.findById(req.params.id, function(err, user) {
-        console.log("This is the user: ", user);
+        console.log("USER SHOW req.user: ", req.user);
         res.render('user/show.ejs', { user: user} );      
     })
 });
@@ -61,24 +55,13 @@ router.get('/:id/accomp', function(req, res){
 // we will want this protected so you have to be logged in to visit
  // we will use route middleware to verify this (the isLoggedIn function)
 router.get('/:id', isLoggedIn, function(req, res) {
+    console.log('req.user: ', req.user);
     req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
     User.findById(req.params.id, function(err, user) {
         res.render('user/show.ejs', { user: user });
     });
 });
 
-// saves a new accomplishment to the accomp model and the User's accomp list
-router.post('/:id/newAccomp', function(req, res) {
- User.findById(req.params.id, function(err, user) {
-     var accomp = new Accomp(req.body);
-     accomp.save(function(err, accomp) {
-         user.accomp.push(accomp);
-         user.save(function(err, user) {
-             res.redirect('/user/' + req.params.id);
-         });         
-     });
- });
-});
 
 // SIGNUP
 
@@ -93,9 +76,25 @@ router.post('/', passport.authenticate('local-signup', {
 
 router.post('/login', passport.authenticate('local-login', { 
     failureRedirect: '/user/json' }), function(req, res) {
-    // success redirect goes to show page
-    console.log('loggin in');
-    res.redirect('/user/' + req.user.id);
+        // success redirect goes to show page
+        console.log('loggin in');
+        res.redirect('/user/' + req.user.id);
+});
+
+//ADD ACCOMP TO CHAMP CHART ("EARNED" ARRAY)
+router.post('/:id/newaccomp', function(req, res){
+    console.log("post request accessed");
+    User.findById(req.user.id, function(err, user){
+        Accomp.findById(req.body.accomp_id, function(err, useraccomp){
+        // user.accomp.findById(req.params.id, function(err, useraccomp){
+            console.log(useraccomp);
+            user.earned.push(useraccomp);
+            user.save(function(err, data){
+                console.log("data is " + data);
+                res.redirect('/user/:id')
+            });
+        });
+    });
 });
 
 // DELETE
@@ -129,24 +128,30 @@ router.get('/seed/newuser', function(req, res) {
             username: "Amelia",
             email: "paukao@gmail.com",
             password: 1234,
-            earned: [],
+            earned: [
+                {
+                name: "sweetheart",
+                descr: "was a total sweetheart!",
+                img: "/img/heart.png",
+                },
+            ],
             accomp: [
             {
-            name: "housework",
-            descr: "helped with housework",
-            img: "mop icon",
+                name: "housework",
+                descr: "helped with housework",
+                img: "/img/housework.png",
             }, {
-            name: "picked up toys",
-            descr: "put all of my toys away",
-            img: "tbd icon",
+                name: "awesome",
+                descr: "was completely awesome",
+                img: "/img/star_sticker.png",
             }, {
-            name: "being kind",
-            descr: "went out of my way to be kind to someone",
-            img: "angel wings icon",
+                name: "being kind",
+                descr: "went out of my way to be kind to someone",
+                img: "/img/angel_sticker.png",
             }, {
-            name: "helping mommy",
-            descr: "helped mommy without being asked",
-            img: "mom icon",
+                name: "helped mom & dad",
+                descr: "helped mom and dad being asked",
+                img: "/img/help_mom.png",
             }
         ]
 

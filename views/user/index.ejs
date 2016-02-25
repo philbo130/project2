@@ -20,7 +20,7 @@
 				<input type="password" name="password" placeholder="password">
 				<br/>
 				<br/>
-				<input type="submit">
+				<button>log me in</button> 
 			</form>
 	</div>
 		<br/>
@@ -33,8 +33,7 @@
 				<input type="password" name="password" placeholder="password">	
 				<br/>	
 				<br/>		
-				<input type="submit">
-			</form>
+				<button>sign me up</button> 
 		<br/>
 	</div>
 		<br/>
@@ -45,7 +44,7 @@
 		<select id="dataset-select">
 			<option value=""/>-------</option>
 			<% for (var i=0; i < user.length; i ++) { %>
-				<option value="<%=user.id %>"><%= user.username %></option>
+				<option value="<%=user[i].id %>"><%= user[i].username %></option>
 			<% } %>
 		</select>					
 	</div>

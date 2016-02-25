@@ -8,24 +8,36 @@
 html {
 	margin: 0;
 	padding: 0;
+	min-height: 100%; 
 }
 
+h1 {
+	color:#212121;
+	font-weight: bold;
+}
 body {
-	/*background-image:;*/
+	/*background-color: #F4511E;*/
+	background-image: url('/img/champchart_back.png');
+	background-size: cover;
+	background-position: center;
 	background-size: 1400px 1000px;
-	color: grey;
+	color: #212121;
 	font-size: 16px;
 	margin: 20px 0px 0px 0px;
-	padding: 0;
+	padding: 0;	
 }
 
 header {
 	height: 4em;
-    /*background: rgba*/
     position: fixed;
     top: 0;
     width: 100%;
     z-index: -1
+}
+
+input {
+	background-color: #FFF3E0;
+	box-shadow: 5px 5px 2px #424242;
 }
 
 h1 {
@@ -38,12 +50,26 @@ h1 {
 	margin: 100px 0px 10px 0px;
 	height: 100px;
 	width: 100%;
-	border-width: 1px;
-	border-color: grey;
-	/*border: solid grey 1px;*/
+}
+
+#data-select {
+	background-color: #FFF3E0;
+	box-shadow: 5px 5px 2px #424242;
+}
+
+button {
+	background-color: #00BFA5;
+	box-shadow: 5px 5px 2px #424242;
+	border-radius: 4px;
+}
+
+button:hover {
+	transform: scale(1.1);
+	background-color: #FFD45F;
 }
 
 ul li{
+	color:#212121;
 	text-decoration: none;
 	display: inline-block;
 	margin: 0px 20px 0px 10px;

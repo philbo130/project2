@@ -5,13 +5,13 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script type="text/javascript"src="/js/user.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<title>champ chart</title>
+	<title><%user.username%>champ chart</title>
 </head>
 <body> 
 	<header>
 		<h2><%=user.username%>'s champ chart</h2>
 	</header>
-	<section id="message-board">you're a champ! add stickers to your champ chart!	</section>
+	<section id="message-board">you're a champ! add stickers to your champ chart</section>
 	
 	<section id="chart">
 		<div class="square"></div>
@@ -33,31 +33,29 @@
 	<div id="sticker-container">
 		<h4><%=user.username%>'s sticker collection</h4> 
 		<p>click to add sticker to your chart<p>
-		<ul>
-			<% for (var i = 0; i < user.accomp.length; i++) { %>
-			<li><%=user.accomp[i].name%>
-				<br/>
-				<%=user.accomp[i].img%>
-				<br/>
-				<%=user.accomp[i].descr%>
-			</li>
+			<a><% for (var i = 0; i < user.accomp.length; i++) { %>	
+			<img src="<%=user.accomp[i].img%>">	
+
+			<form action="/user/<%=user.accomp[i].id%>/newaccomp?_method=post" method="POST">
+				<input type="hidden" name="name" value="<%=user.accomp[i].id%>">
+				<input type="hidden" name="descr" value="<%=user.accomp[i].descr%>">
+				<input type="hidden" name="img" value="<%=user.accomp[i].img%>">
+				<input type="hidden" name="accomp_id" value="<%=user.accomp[i].id%>">
+				<button>add</button> 
+			</form></a>
 			<% } %>
-		</ul>
-			
 	</div>
 	<div id="delete-container">
-		<form action="/user/<%=user.id%>?_method=DELETE" method="POST">
-			<input type="hidden" name="_method" value="DELETE/">
+		<form action="/user/<%=user.id%>?_method=DELETE" method="PUT">
+			<input type="hidden" name="name" value="DELETE/">
 		<button>delete me and my champ chart</button> 
 	</form>
 	</div>
 	<footer>
-		<ul>
-			<li><a href="/user">login</a></li>			
-			<li><a href="/user">champs</a></li>
-			<li><a href="/accomp">stickers</a></li>
-			<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
-		</ul>
+		<a href="/user">login</a>
+		<a href="/user">champs</a>
+		<a href="/accomp">stickers</a>
+		<a href="/user/logout" class="btn btn-default btn-sm">Logout</a>
 	</footer>
 </body>
 </html>
