@@ -2,7 +2,7 @@
 var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/champcharts'
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var bodyParser = require('body-parser');
@@ -35,6 +35,9 @@ app.use(function(req, res, next) {
 });
 
 require('./config/passport')(passport);
+app.get("/", function(req, res) {
+  res.redirect("/users")
+})
 
 //LISTEN
 mongoose.connection.once('open', function() {
