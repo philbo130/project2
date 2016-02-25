@@ -46,7 +46,7 @@
 			<% } %>
 	</div>
 	<div id="delete-container">
-		<form action="/user/<%=user.id%>?_method=DELETE" method="PUT">
+		<form action="/user/<%=user.id%>?_method=DELETE" method="POST">
 			<input type="hidden" name="name" value="DELETE/">
 		<button>delete me and my champ chart</button> 
 	</form>
