@@ -1,4 +1,5 @@
 //REUIREMENTS
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/champcharts'
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
@@ -8,7 +9,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
 
-mongoose.connect('mongodb://localhost:27017/rewards');
+//mongoose.connect('mongodb://localhost:27017/rewards');
+mongoose.connect(mongoUri);
 
 //MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: true}));
